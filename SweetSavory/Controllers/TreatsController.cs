@@ -24,5 +24,10 @@ namespace SweetSavory.Controllers
     {
       return View(_db.Treats.ToList());
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
   }
 }
