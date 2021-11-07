@@ -10,9 +10,10 @@ using System.Security.Claims;
 
 namespace SweetSavory.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
-    [Authorize]
+    
     private readonly SweetSavoryContext _db;
     private readonly UserManager <ApplicationUser> _userManager;
     public TreatsController(UserManager <ApplicationUser> userManager, SweetSavoryContext db)
