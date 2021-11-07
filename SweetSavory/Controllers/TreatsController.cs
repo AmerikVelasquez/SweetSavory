@@ -12,6 +12,7 @@ namespace SweetSavory.Controllers
 {
   public class TreatsController : Controller
   {
+    [Authorize]
     private readonly SweetSavoryContext _db;
     private readonly UserManager <ApplicationUser> _userManager;
     public TreatsController(UserManager <ApplicationUser> userManager, SweetSavoryContext db)
@@ -19,7 +20,7 @@ namespace SweetSavory.Controllers
       _userManager = userManager; 
       _db = db;
     }
-
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Treats.ToList());
@@ -37,7 +38,7 @@ namespace SweetSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treats
