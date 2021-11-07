@@ -1,0 +1,10 @@
+@model SweetSavory.Models.Flavor
+
+<h2> Delete Flavor? <h2>
+
+@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+  <input type = "submit" value="Delete"/>
+}
+@Html.ActionLink("Back To Flavors", "Index")
