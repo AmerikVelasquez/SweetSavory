@@ -10,6 +10,7 @@ using System.Security.Claims;
 
 namespace SweetSavory.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly SweetSavoryContext _db;
@@ -20,7 +21,7 @@ namespace SweetSavory.Controllers
       _userManager = userManager;
       _db = db;
     }
-
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Flavors.ToList());
@@ -38,7 +39,7 @@ namespace SweetSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       var thisFlavor= _db.Flavors
